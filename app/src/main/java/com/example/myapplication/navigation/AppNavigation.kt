@@ -8,7 +8,6 @@ import com.example.myapplication.screens.LoginScreen
 import com.example.myapplication.screens.SingUpScreen
 import com.example.myapplication.screens.WelcomeScreen
 
-
 @Composable
 fun AppNavigation(){
     val navController = rememberNavController()
@@ -18,13 +17,13 @@ fun AppNavigation(){
         startDestination = "welcome"
     ) {
         composable(route = "welcome") {
-            WelcomeScreen()
+            WelcomeScreen(navController)
         }
         composable(route = "login"){
-            LoginScreen()
+            LoginScreen(navController)
         }
         composable (route = "singup"){
-            SingUpScreen()
+            SingUpScreen(navController)
         }
     }
 }
