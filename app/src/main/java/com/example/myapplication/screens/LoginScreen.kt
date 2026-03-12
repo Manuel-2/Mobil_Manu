@@ -10,13 +10,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import androidx.compose.runtime.getValue;
+import androidx.compose.runtime.setValue;
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 @Composable
 fun LoginScreen(navController: NavController) {
+
+    var emailText by remember { mutableStateOf("") }
+    var isEmailValid by remember { mutableStateOf(false) }
+
+    var password by remember { mutableStateOf("") }
+
+    fun validateEmail(email:String) : Boolean{
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -24,20 +39,19 @@ fun LoginScreen(navController: NavController) {
     ) {
 
         Text(
-            text = "Hello!",
-            style = MaterialTheme.typography.headlineMedium
-        )
-
-        Text(
             text = "Login",
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         TextField(
-            value = "",
-            onValueChange = {},
+            value = emailText,
+            onValueChange = {
+                emailText = it
+                isEmailValid = validateEmail(emailText)
+            },
+            isError = true,
             label = { Text("Correo") },
             modifier = Modifier.fillMaxWidth()
         )
@@ -45,10 +59,13 @@ fun LoginScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(12.dp))
 
         TextField(
-            value = "",
-            onValueChange = {},
+            value = password,
+            onValueChange = {
+                password = it
+            },
             label = { Text("Contraseña") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            visualTransformation = PasswordVisualTransformation()
         )
 
         Spacer(modifier = Modifier.height(24.dp))

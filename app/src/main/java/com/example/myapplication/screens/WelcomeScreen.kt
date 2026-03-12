@@ -11,6 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -24,18 +25,20 @@ fun WelcomeScreen(navController: NavController) {
             .fillMaxSize()
             .padding(24.dp),
     ) {
+        Text(
+            text = "Welcome",
+            style = MaterialTheme.typography.headlineLarge,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        )
         Image(
             painter = painterResource(R.drawable.littledrop),
             "Logo welcomescreen",
-            modifier = Modifier.size(300.dp)
+            modifier = Modifier.size(300.dp).align(Alignment.CenterHorizontally)
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Text(
-            text = "Welcome",
-            style = MaterialTheme.typography.headlineLarge
-        )
+
 
         Spacer(modifier = Modifier.height(24.dp))
 
