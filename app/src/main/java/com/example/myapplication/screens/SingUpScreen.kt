@@ -37,9 +37,9 @@ fun SingUpScreen( navController: NavController) {
     var userName by remember { mutableStateOf("") }
     var isUserNameValid by remember { mutableStateOf(false) }
     var userNamePattern = Pattern.compile("\\w{4,20}")
-    fun validateUser(userName:String) : Bool {
-        
-    }
+//    fun validateUser(userName:String) : Bool {
+//
+//    }
 
 
     var phone by remember { mutableStateOf("") }
